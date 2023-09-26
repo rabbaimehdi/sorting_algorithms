@@ -2,7 +2,7 @@
 /**
  * i_swap - function that swap two element of an array
  * @i: the first element to swap
- * @j: the second element to swap 
+ * @j: the second element to swap
  */
 void i_swap(int *i, int *j)
 {
@@ -15,8 +15,8 @@ void i_swap(int *i, int *j)
 /**
  * partition - function that sorts an array
  * @array: array of intergers
- * @i_low: start indice 
- * @i_high: end indice 
+ * @i_low: start indice
+ * @i_high: end indice
  * @size: size of the array
  * Return: final indice
  */
@@ -48,7 +48,7 @@ int partition(int *array, int i_low, int i_high, size_t size)
 /**
  * sort_i - function that sorts the array
  * @array: array to sort
- * @i_low: start indice 
+ * @i_low: start indice
  * @i_high: end indice
  * @size: size of the array
  * Return: nothing
