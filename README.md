@@ -1,2 +1,2 @@
 # sorting_algorithms
-sorting_algorithms in C 
+sorting_algorithms in C
