@@ -23,47 +23,45 @@ void i_swap(int *i, int *j)
 int partition(int *array, int i_low, int i_high, size_t size)
 {
 	int a, b;
-	int pivot;
+	int *pivot;
 
-	pivot = array[i_high];
-	b = i_low;
-
-	for (a = i_high; a <= i_high - 1; a++)
+	pivot = array + i_high;
+	for (a = b = i_low; b <= i_high - 1; b++)
 	{
-		if (array[a] < pivot)
+		if (array[b] < *pivot)
 		{
-			if (a != b && array[a] != array[b])
+			if (a < b)
 			{
 				i_swap(&array[b], &array[a]);
 				print_array(array, size);
 			}
-			b++;
+			a++;
 		}
 	}
-	if (b != i_high && array[b] != array[i_high])
+	if (array[a] > *pivot)
 	{
-		i_swap(&array[b], &array[i_high]);
+		i_swap(&array[a], pivot);
 		print_array(array, size);
 	}
-	return (b);
+	return (a);
 }
 /**
- * recursion - function that sorts the array
+ * sort_i - function that sorts the array
  * @array: array to sort
  * @i_low: start indice 
  * @i_high: end indice
  * @size: size of the array
  * Return: nothing
  */
-void recursion(int *array, int i_low, int i_high, size_t size)
+void sort_i(int *array, int i_low, int i_high, size_t size)
 {
 	int b;
 
 	if (i_low < i_high)
 	{
 		b = partition(array, i_low, i_high, size);
-		recursion(array, i_low, b - 1, size);
-		recursion(array, b + 1, i_high, size);
+		sort_i(array, i_low, b - 1, size);
+		sort_i(array, b + 1, i_high, size);
 	}
 }
 /**
@@ -74,7 +72,7 @@ void recursion(int *array, int i_low, int i_high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (size <= 1)
+	if (array == NULL || size < 2)
 		return;
-	recursion(array, 0, size - 1, size);
+	sort_i(array, 0, size - 1, size);
 }
